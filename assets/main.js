@@ -1,4 +1,4 @@
-/* Jungle Bar — site behaviour */
+/* Jungle Bar - site behaviour */
 (function () {
   const WA = "5978632450";
 
@@ -55,14 +55,14 @@
       const label = el.querySelector("[data-status-label]");
       if (!label) return;
       if (open) {
-        label.textContent = "Nu open, tot 02:00";
+        label.textContent = "Open now, until 02:00";
       } else if (h < 15) {
         const mins = (15 - h) * 60 - m;
         label.textContent = mins > 90
-          ? "Gesloten, open om 15:00"
-          : "Open over " + mins + " min";
+          ? "Closed, opens at 15:00"
+          : "Opens in " + mins + " min";
       } else {
-        label.textContent = "Gesloten, open om 15:00";
+        label.textContent = "Closed, opens at 15:00";
       }
     });
   }
@@ -89,7 +89,7 @@
   if (gallery) {
     const box = document.createElement("div");
     box.className = "lightbox";
-    box.innerHTML = '<button type="button" aria-label="Sluiten">&times;</button><img alt="">';
+    box.innerHTML = '<button type="button" aria-label="Close">&times;</button><img alt="">';
     document.body.appendChild(box);
     const img = box.querySelector("img");
     const close = () => box.classList.remove("is-open");
@@ -121,13 +121,13 @@
       const note = form.querySelector("[data-form-note]");
 
       if (!name || !message) {
-        if (note) note.textContent = "Vul je naam en bericht in, dan openen we WhatsApp met de tekst erin.";
+        if (note) note.textContent = "Add your name and a message, and we'll open WhatsApp with it ready to send.";
         (name ? form.querySelector("textarea") : form.querySelector("input")).focus();
         return;
       }
-      const text = "Hoi Jungle Bar, ik ben " + name + ". Onderwerp: " + topic + ". " + message;
+      const text = "Hi Jungle Bar, this is " + name + ". Topic: " + topic + ". " + message;
       window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(text), "_blank", "noopener");
-      if (note) note.textContent = "WhatsApp is geopend met je bericht. Verstuur het daar om te reageren.";
+      if (note) note.textContent = "WhatsApp is open with your message. Send it there and we'll reply.";
     });
   }
 
